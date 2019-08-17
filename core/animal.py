@@ -14,6 +14,10 @@ class Animal:
 
         self._is_alive = True
 
+    @property
+    def is_alive(self):
+        return self._is_alive
+
     def _is_dead_error(self, action) -> None:
         if not self._is_alive:
             raise Exception(f"cannot {action} when dead")
@@ -36,10 +40,6 @@ class Animal:
         if self._health <= 0:
             self._is_alive = False
             self._health = 0
-        return self._is_alive
-
-    @property
-    def is_alive(self):
         return self._is_alive
 
     def special_attack(self) -> Tuple[int, str]:
