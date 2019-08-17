@@ -15,11 +15,11 @@ class Arena:
         Arena.__enter_the_pit(contenders[0])
         Arena.__enter_the_pit(contenders[1])
 
-        while self.cat.is_alive() and self.dog.is_alive():
+        while self.cat.is_alive and self.dog.is_alive:
             shuffle(contenders)
             Arena.__animal_attack(contenders[0], contenders[1])
 
-        winner_name = self.cat.get_name() if self.cat.is_alive() else self.dog.get_name()
+        winner_name = self.cat.get_name() if self.cat.is_alive else self.dog.get_name()
         print(f"\n{winner_name} has won the battle!")
 
     @staticmethod
@@ -31,7 +31,7 @@ class Arena:
         damage, attack = attacker.attack() if random() < 0.8 else attacker.special_attack()
         print(f"\n{attacker.get_name()} {attack} {attacked.get_name()} and dealt {damage} damage.")
         attacked.receive_damage(damage)
-        if attacked.is_alive():
+        if attacked.is_alive:
             print(f"{attacked.get_name()} now has {attacked.get_health()} HP left.")
         else:
             print(f"{attacked.get_name()} has been killed.")

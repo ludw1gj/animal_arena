@@ -19,10 +19,10 @@ class Cat(Animal):
 
     def receive_damage(self, damage: int) -> bool:
         _ = super().receive_damage(damage)
-        if not self._is_alive and random() < 0.2:
+        if not self.is_alive and random() < 0.2:
             # nine lives ability
             self._health = 1
             self._is_alive = True
             print(f"{self._name} landed on his/her feet.")
             return True
-        return self._is_alive
+        return self.is_alive
