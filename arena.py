@@ -7,7 +7,6 @@ class Arena:
     def __init__(self, cat, dog):
         self.dog = dog
         self.cat = cat
-        pass
 
     def fight(self) -> None:
         contenders = [self.cat, self.dog]
@@ -18,6 +17,7 @@ class Arena:
 
         while self.cat.is_alive() and self.dog.is_alive():
             shuffle(contenders)
+
             Arena.__animal_attack(contenders[0], contenders[1])
 
         winner_name = self.cat.get_name() if self.cat.is_alive() else self.dog.get_name()
