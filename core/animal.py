@@ -10,8 +10,9 @@ class Animal:
         self._sound = sound
         self._damage = damage
         self._defence = defence
-        self._is_alive = True
         self._special_attack_name = special_attack_name
+
+        self._is_alive = True
 
     def _is_dead_error(self, action) -> None:
         if not self._is_alive:
