@@ -4,13 +4,14 @@ from typing import List, Tuple
 
 
 class Animal:
-    def __init__(self, name: str, sound: str, health: int, damage: int, defence: int):
+    def __init__(self, name: str, sound: str, health: int, damage: int, defence: int, special_attack_name: str):
         self._name = name
         self._health = health
         self._sound = sound
         self._damage = damage
         self._defence = defence
         self._is_alive = True
+        self._special_attack_name = special_attack_name
 
     def _is_dead_error(self, action) -> None:
         if not self._is_alive:
@@ -39,9 +40,9 @@ class Animal:
     def is_alive(self):
         return self._is_alive
 
-    @abstractmethod
     def special_attack(self) -> Tuple[int, str]:
-        pass
+        self._is_dead_error("special attack")
+        return randint(1, self._damage) * 2, self._special_attack_name
 
     @abstractmethod
     def get_name(self) -> str:

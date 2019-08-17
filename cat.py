@@ -1,6 +1,3 @@
-from random import randint
-from typing import Tuple
-
 from animal import Animal
 
 
@@ -12,11 +9,8 @@ class Cat(Animal):
         health = 9
         damage = 6
         defence = 2
-        super().__init__(name, sound, health, damage, defence)
-
-    def special_attack(self) -> Tuple[int, str]:
-        super()._is_dead_error("special attack")
-        return randint(1, self._damage), "clawed"
+        special_attack_name = "clawed"
+        super().__init__(name, sound, health, damage, defence, special_attack_name)
 
     def get_name(self) -> str:
         return f"{self._name} (the cat)"
