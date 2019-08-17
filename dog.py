@@ -15,6 +15,7 @@ class Dog(Animal):
         super().__init__(name, sound, health, damage, defence)
 
     def special_attack(self) -> Tuple[int, str]:
+        super()._is_dead_error("special attack")
         return randint(1, self._damage) * 2, "back-kicked"
 
     def get_name(self) -> str:

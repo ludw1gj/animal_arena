@@ -15,6 +15,7 @@ class Cat(Animal):
         super().__init__(name, sound, health, damage, defence)
 
     def special_attack(self) -> Tuple[int, str]:
+        super()._is_dead_error("special attack")
         return randint(1, self._damage), "clawed"
 
     def get_name(self) -> str:
