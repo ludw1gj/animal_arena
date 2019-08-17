@@ -1,4 +1,4 @@
-from animal import Animal
+from core.animal import Animal
 
 
 class Cat(Animal):

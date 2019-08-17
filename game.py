@@ -1,6 +1,6 @@
-from arena import Arena
-from cat import Cat
-from dog import Dog
+from core.arena import Arena
+from core.cat import Cat
+from core.dog import Dog
 
 
 def start_game():

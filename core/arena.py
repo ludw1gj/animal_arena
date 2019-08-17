@@ -1,6 +1,6 @@
 from random import shuffle, random
 
-from animal import Animal
+from core.animal import Animal
 
 
 class Arena:
@@ -36,4 +36,3 @@ class Arena:
             print(f"{attacked.get_name()} now has {attacked.get_health()} HP left.")
         else:
             print(f"{attacked.get_name()} has been killed.")
-
