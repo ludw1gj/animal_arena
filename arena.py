@@ -13,8 +13,8 @@ class Arena:
         contenders = [self.cat, self.dog]
         shuffle(contenders)
 
-        print(Arena.__gen_enter_the_pit_text(contenders[0]))
-        print(Arena.__gen_enter_the_pit_text(contenders[1]))
+        Arena.__enter_the_pit(contenders[0])
+        Arena.__enter_the_pit(contenders[1])
 
         while self.cat.is_alive() and self.dog.is_alive():
             shuffle(contenders)
@@ -24,13 +24,14 @@ class Arena:
         print(f"\n{winner_name} has won the battle!")
 
     @staticmethod
-    def __gen_enter_the_pit_text(animal: Animal) -> str:
-        return f"{animal.speak()}! {animal.get_name()} has entered the area!"
+    def __enter_the_pit(animal: Animal) -> None:
+        print(f"{animal.speak()}! {animal.get_name()} has entered the area!")
 
     @staticmethod
     def __animal_attack(attacker: Animal, attacked: Animal) -> None:
         damage = attacker.attack()
         attacked.receive_damage(damage)
+
         print(f"\n{attacker.get_name()} attacked {attacked.get_name()} and dealt {damage} damage.")
         if attacked.is_alive():
             print(f"{attacked.get_name()} now has {attacked.get_health()} HP left.")
