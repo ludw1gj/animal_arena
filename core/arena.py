@@ -29,9 +29,8 @@ class Arena:
     @staticmethod
     def __animal_attack(attacker: Animal, attacked: Animal) -> None:
         damage, attack = attacker.attack() if random() < 0.8 else attacker.special_attack()
-        attacked.receive_damage(damage)
-
         print(f"\n{attacker.get_name()} {attack} {attacked.get_name()} and dealt {damage} damage.")
+        attacked.receive_damage(damage)
         if attacked.is_alive():
             print(f"{attacked.get_name()} now has {attacked.get_health()} HP left.")
         else:
