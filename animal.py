@@ -6,38 +6,38 @@ from typing import List, Tuple
 class Animal:
     def __init__(self, name: str, sound: str, health: int, damage: int, defence: int):
         self._name = name
-        self.__health = health
-        self.__sound = sound
-        self.__damage = damage
-        self.__defence = defence
-        self.__is_alive = True
+        self._health = health
+        self._sound = sound
+        self._damage = damage
+        self._defence = defence
+        self._is_alive = True
 
     def _is_dead_error(self, action) -> None:
-        if not self.__is_alive:
+        if not self._is_alive:
             raise Exception(f"cannot {action} when dead")
 
     def get_health(self):
-        return self.__health
+        return self._health
 
     def speak(self) -> str:
         self._is_dead_error("speak")
-        return self.__sound
+        return self._sound
 
-    def attack(self) -> int:
+    def attack(self) -> Tuple[int, str]:
         self._is_dead_error("attack")
-        return randint(1, self.__damage)
+        return randint(1, self._damage), "attacked"
 
     def receive_damage(self, damage: int) -> bool:
         self._is_dead_error("receive damage")
 
-        self.__health -= damage
-        if self.__health <= 0:
-            self.__is_alive = False
-            self.__health = 0
-        return self.__is_alive
+        self._health -= damage - randint(0, self._defence)
+        if self._health <= 0:
+            self._is_alive = False
+            self._health = 0
+        return self._is_alive
 
     def is_alive(self):
-        return self.__is_alive
+        return self._is_alive
 
     @abstractmethod
     def special_attack(self) -> Tuple[int, str]:

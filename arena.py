@@ -1,4 +1,4 @@
-from random import shuffle
+from random import shuffle, random
 
 from animal import Animal
 
@@ -17,7 +17,6 @@ class Arena:
 
         while self.cat.is_alive() and self.dog.is_alive():
             shuffle(contenders)
-
             Arena.__animal_attack(contenders[0], contenders[1])
 
         winner_name = self.cat.get_name() if self.cat.is_alive() else self.dog.get_name()
@@ -29,10 +28,10 @@ class Arena:
 
     @staticmethod
     def __animal_attack(attacker: Animal, attacked: Animal) -> None:
-        damage = attacker.attack()
+        damage, attack = attacker.attack() if random() < 0.8 else attacker.special_attack()
         attacked.receive_damage(damage)
 
-        print(f"\n{attacker.get_name()} attacked {attacked.get_name()} and dealt {damage} damage.")
+        print(f"\n{attacker.get_name()} {attack} {attacked.get_name()} and dealt {damage} damage.")
         if attacked.is_alive():
             print(f"{attacked.get_name()} now has {attacked.get_health()} HP left.")
         else:
